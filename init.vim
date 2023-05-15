@@ -115,8 +115,12 @@ Plug 'nvim-treesitter/nvim-treesitter' " Better syntax highlighting
 call plug#end()
 
 
+
+
 " ========== Plugin Setting ========== 
 set laststatus=2
+
+
 
 
 
@@ -131,7 +135,9 @@ map tt :NERDTreeToggle<CR>
 let g:coc_global_extensions = [
 		\ 'coc-clangd',
 		\ 'coc-pyright',
-		\ 'coc-sh'
+		\ 'coc-sh',
+		\ 'coc-json',
+		\ 'coc-snippets'
 	  \ ]
 
 " vscode like multiline editing
@@ -193,3 +199,12 @@ endfunction
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Snippets
+"Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
