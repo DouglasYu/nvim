@@ -29,12 +29,14 @@ set number "show the line number
 set norelativenumber
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 set autoindent "Use indent from the previous line
 set splitright
 set splitbelow
 set ignorecase "Ignore the case when searching
 set smartcase "Smart case matching
 set wrap
+set noshowmode " There will be no -- INSERT -- prompt below
 
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
 silent !mkdir -p $HOME/.config/nvim/tmp/undo
@@ -75,7 +77,7 @@ noremap <down> :res -5<CR>
 noremap <left> :vertical resize+5<CR>
 noremap <right> :vertical resize-5<CR>
 " Place the two screens up and down
-noremap sh <C-w>t<C-w>K
+noremap sc <C-w>t<C-w>K
 " " Place the two screens side by side
 noremap sv <C-w>t<C-w>H
 
@@ -83,29 +85,46 @@ noremap sv <C-w>t<C-w>H
 " ========== Install Plugins with Vim-Plug ==========
 call plug#begin('$HOME/.config/nvim/plugged')
 
+" == Editor Behavior ==
 Plug 'preservim/nerdcommenter' " <leader> ci to toggle comment.
 Plug 'godlygeek/tabular'       " Command: Tabularize <regex> to align
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] } " Semantic highlighting for python. Run :UpdateRemotePlugins after install.
+Plug 'terryma/vim-multiple-cursors' " realize a multiple cursor functionality like vscode
+
+" == Auto Completion ==
 "Plug 'neoclide/coc.nvim', {'branch': 'release'} " Auto completion. You also have to install coc extensions.
 Plug 'neoclide/coc.nvim', { 'commit': '63dd239bfe02998810b39d039827e2510885b57b', 'do': 'yarn install --frozen-lockfile' }
+
+" == File Navigator ==
 Plug 'preservim/nerdtree' " provide a tree-style file explorer.
-Plug 'vim-airline/vim-airline' " Add a status bar below
-" Plug 'ibhagwan/fzf-lua' " quickly find a file in the system
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'terryma/vim-multiple-cursors' " realize a multiple cursor functionality like vscode
+" Plug 'ibhagwan/fzf-lua' " quickly find a file in the system
+
+" == Status line ==
+"Plug 'vim-airline/vim-airline' " Add a status bar below
+Plug 'itchyny/lightline.vim' " A simpler status line
+
+" == Code Related ==
 Plug 'nvim-treesitter/nvim-treesitter' " Better syntax highlighting
+
 
 " Plug 'mbbill/undotree' " Show undo history
 " Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] } " Easy writing table in markdown
 
+call plug#end()
+
+
+" ========== Plugin Setting ========== 
+set laststatus=2
+
+
 
 " ========== Plugin Mapping ==========
 " NERDTree
-map tt :NERDTree<CR>
+map tt :NERDTreeToggle<CR>
 
 
-call plug#end()
 
 
 " ========== coc.vim config ==========
@@ -126,20 +145,22 @@ endfunc
 
 " Use tab for trigger completion with characters ahead and navigate
 inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-
-function! CheckBackspace() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+			\ coc#pum#visible() ? coc#pum#next(1) :
+			\ CheckBackspace() ? "\<Tab>" :
+			\ coc#refresh()
 
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" This function do not check if the last character you inserted is backspace!
+function! CheckBackspace() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 
 " Use <c-space> to trigger completion
 if has('nvim')
@@ -159,8 +180,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window
-nnoremap <silent> <leader>h :call ShowDocumentation()<CR>
+" Use <LEADER>i to show documentation in preview window
+nnoremap <silent> <LEADER>i :call ShowDocumentation()<CR>
 function! ShowDocumentation()
 	if CocAction('hasProvider', 'hover')
 		call CocActionAsync('doHover')
