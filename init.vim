@@ -83,50 +83,77 @@ noremap sv <C-w>t<C-w>H
 
 
 " ========== Install Plugins with Vim-Plug ==========
+
 call plug#begin('$HOME/.config/nvim/plugged')
+
 
 " == Editor Behavior ==
 Plug 'preservim/nerdcommenter' " <leader> ci to toggle comment.
 Plug 'godlygeek/tabular'       " Command: Tabularize <regex> to align
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] } " Semantic highlighting for python. Run :UpdateRemotePlugins after install.
 Plug 'terryma/vim-multiple-cursors' " realize a multiple cursor functionality like vscode
+Plug 'jiangmiao/auto-pairs' " Automatically close the brackets/paranthesis
+Plug 'mbbill/undotree' " Show undo history
+" Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] } " Easy writing table in markdown
+Plug 'airblade/vim-gitgutter' " Show the git + and - in the left column
+
 
 " == Auto Completion ==
+
 "Plug 'neoclide/coc.nvim', {'branch': 'release'} " Auto completion. You also have to install coc extensions.
 Plug 'neoclide/coc.nvim', { 'commit': '63dd239bfe02998810b39d039827e2510885b57b', 'do': 'yarn install --frozen-lockfile' }
 
 " == File Navigator ==
-Plug 'preservim/nerdtree' " provide a tree-style file explorer.
+
+" Plug 'preservim/nerdtree' " provide a tree-style file explorer.
+Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
+Plug 'nvim-lua/plenary.nvim' " neo-tree dependencies
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'MunifTanjim/nui.nvim'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Plug 'ibhagwan/fzf-lua' " quickly find a file in the system
+
 
 " == Status line ==
 "Plug 'vim-airline/vim-airline' " Add a status bar below
 Plug 'itchyny/lightline.vim' " A simpler status line
 
+
 " == Code Related ==
 Plug 'nvim-treesitter/nvim-treesitter' " Better syntax highlighting
 
 
-" Plug 'mbbill/undotree' " Show undo history
-" Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] } " Easy writing table in markdown
+" == Color Schemes ==
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+
+" == Beautify ==
+Plug 'NvChad/nvim-colorizer.lua' " Show the actual color for 32-bit color representation
+Plug 'ryanoasis/vim-devicons' " Add more icons for coding
+
 
 call plug#end()
 
 
 
-
+" ====================================
 " ========== Plugin Setting ========== 
-set laststatus=2
+" ====================================
 
+set laststatus=2 " In case the status bar didnt work correctly
+let g:neo_tree_remove_legacy_commands = 1
+colorscheme tokyonight
 
 
 
 
 " ========== Plugin Mapping ==========
+
 " NERDTree
-map tt :NERDTreeToggle<CR>
+" map tt :NERDTreeToggle<CR>
+map tt :Neotree focus source=filesystem position=left<CR>
 
 
 
