@@ -54,9 +54,7 @@ noremap S :w<CR>
 nnoremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
 nnoremap <LEADER>rv :e .nvimrc<CR>
 inoremap <c-y> <ESC>A {}<ESC>i<CR><ESC>ko
-"inoremap { {}<ESC>ha 
-"inoremap " ""<ESC>ha
-"inoremap ( ()<ESC>ha
+nnoremap <esc> :noh<CR>
 
 " ========== Moving Cursor ==========
 noremap J 10j
@@ -99,21 +97,18 @@ Plug 'airblade/vim-gitgutter' " Show the git + and - in the left column
 
 
 " == Auto Completion ==
-
-"Plug 'neoclide/coc.nvim', {'branch': 'release'} " Auto completion. You also have to install coc extensions.
 Plug 'neoclide/coc.nvim', { 'commit': '63dd239bfe02998810b39d039827e2510885b57b', 'do': 'yarn install --frozen-lockfile' }
+"Plug 'neoclide/coc.nvim', {'branch': 'release'} " Auto completion. You also have to install coc extensions.
 
 " == File Navigator ==
-
-" Plug 'preservim/nerdtree' " provide a tree-style file explorer.
 Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
 Plug 'nvim-lua/plenary.nvim' " neo-tree dependencies
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'MunifTanjim/nui.nvim'
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-" Plug 'ibhagwan/fzf-lua' " quickly find a file in the system
+Plug 'ibhagwan/fzf-lua' " quickly find a file in the system
+"Plug 'junegunn/fzf.vim'
+" Plug 'preservim/nerdtree' " provide a tree-style file explorer.
 
 
 " == Status line ==
@@ -121,17 +116,23 @@ Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim' " A simpler status line
 
 
-" == Code Related ==
+" == Coding Related ==
 Plug 'nvim-treesitter/nvim-treesitter' " Better syntax highlighting
 
 
-" == Color Schemes ==
+" == Git Tools ==
+Plug 'sindrets/diffview.nvim' "Show the git diff and provide merge UI
+
+
+"== Color Schemes ==
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 
 " == Beautify ==
 Plug 'NvChad/nvim-colorizer.lua' " Show the actual color for 32-bit color representation
 Plug 'ryanoasis/vim-devicons' " Add more icons for coding
+Plug 'nvim-tree/nvim-web-devicons'
+"Plug 'nvimdev/dashboard-nvim' " Start-up dashboard
 
 
 call plug#end()
