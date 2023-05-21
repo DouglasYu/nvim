@@ -2,14 +2,14 @@ return {
 	--
 	-- Neo-tree.nvim
 	-- 
-	{
-		"nvim-neo-tree/neo-tree.nvim", -- File explorer
-		enabled = false,
-		branch = "v2.x",
-		dependencies = {
+	{ "nvim-neo-tree/neo-tree.nvim", -- File explorer 
+
+		enabled = true, 
+		-- branch = "v2.x", 
+		dependencies = { 
 			"nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",	
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",	
 		},
 		config = function()
 			vim.cmd("let g:neo_tree_remove_legacy_commands = 1")
@@ -17,12 +17,15 @@ return {
 			require("neo-tree").setup({
 				-- My Configs
 				close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-        popup_border_style = "rounded",
-        enable_git_status = true,
-        enable_diagnostics = true,
+				popup_border_style = "rounded",
+				enable_git_status = true,
+				enable_diagnostics = true,
 				window = {
-          position = "left",
-          width = 30,
+	          position = "left",
+	          width = 30,
+				},
+				buffers = {
+					follow_current_file = true,
 				},
 				-- the following code is supposed to solve the nerd font v3 problem
 				default_component_configs = {
@@ -35,15 +38,15 @@ return {
 							renamed   = "󰁕",
 							unstaged  = "󰄱",
 							untracked = "",
-              ignored   = "",
-              staged    = "",
-              conflict  = "",
+	              ignored   = "",
+	              staged    = "",
+	              conflict  = "",
 						},
 					},
 					modified = {
-            symbol = "[+]",
-            highlight = "NeoTreeModified",
-          },
+	            symbol = "[+]",
+	            highlight = "NeoTreeModified",
+	          },
 				},
 				document_symbols = {
 					kinds = {
@@ -76,14 +79,14 @@ return {
 			})
 		end
 	},
-
+	
 
 	--
 	-- Another tree explorer
 	--
 	{
 		"nvim-tree/nvim-tree.lua",
-		enabled = true,
+		enabled = false,
 		config = function ()
 			require("nvim-tree").setup()
 			vim.keymap.set('n', 'tt', '<cmd>NvimTreeFocus<CR>', { noremap = true, silent = true })
