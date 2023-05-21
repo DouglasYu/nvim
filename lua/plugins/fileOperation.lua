@@ -4,7 +4,7 @@ return {
 	-- 
 	{
 		"nvim-neo-tree/neo-tree.nvim", -- File explorer
-		enabled = true,
+		enabled = false,
 		branch = "v2.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -16,7 +16,7 @@ return {
 			vim.keymap.set('n', 'tt', '<cmd>Neotree<CR>', { noremap = true, silent = true })
 			require("neo-tree").setup({
 				-- My Configs
-				close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+				close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
@@ -83,7 +83,7 @@ return {
 	--
 	{
 		"nvim-tree/nvim-tree.lua",
-		enabled = false,
+		enabled = true,
 		config = function ()
 			require("nvim-tree").setup()
 			vim.keymap.set('n', 'tt', '<cmd>NvimTreeFocus<CR>', { noremap = true, silent = true })

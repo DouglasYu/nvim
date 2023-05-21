@@ -55,7 +55,7 @@ nnoremap("sl", "<cmd>set splitright<CR><cmd>vsplit<CR>")
 nnoremap("<up>", "<cmd>res +5<CR>")
 nnoremap("<down>", "<cmd>res -5<CR>")
 nnoremap("<left>", "<cmd>vertical resize+5<CR>")
-nnoremap("<left>", "<cmd>vertical resize-5<CR>")
+nnoremap("<right>", "<cmd>vertical resize-5<CR>")
 
 -- Place the panels
 nnoremap("sc", "<C-w>t<C-w>K") -- Place the two panels up and down

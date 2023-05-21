@@ -15,5 +15,5 @@
 require("options")
 require("keymaps")
 require("plugin_loader")
-require("themes")
+-- require("themes") -- Change themes in colorscheme plugins' configurations
 
