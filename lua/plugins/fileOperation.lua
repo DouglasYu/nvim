@@ -4,7 +4,7 @@ return {
 	-- 
 	{ "nvim-neo-tree/neo-tree.nvim", -- File explorer 
 
-		enabled = true, 
+		enabled = false, 
 		-- branch = "v2.x", 
 		dependencies = { 
 			"nvim-lua/plenary.nvim",
@@ -86,7 +86,7 @@ return {
 	--
 	{
 		"nvim-tree/nvim-tree.lua",
-		enabled = false,
+		enabled = true,
 		config = function ()
 			require("nvim-tree").setup()
 			vim.keymap.set('n', 'tt', '<cmd>NvimTreeFocus<CR>', { noremap = true, silent = true })

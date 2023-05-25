@@ -31,5 +31,27 @@
 		"value": "\uf89f",
 		"variable": "\ue71b"
   },
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+
+	
+	"languageserver": {
+
+		"lua": {
+			"command": "~/.local/share/nvim/mason/bin/lua-language-server",
+			"filetypes": ["lua"]
+		},
+
+		"svlangserver": {
+				"module": ".local/share/nvim/mason/packages/svlangserver/node_modules/@imc-trading/svlangserver/lib/svlangserver.js",
+				"filetypes": ["systemverilog"],
+				"settings": {
+						"systemverilog.includeIndexing": ["**/*.{sv,svh}"],
+						"systemverilog.excludeIndexing": ["test/**/*.sv*"],
+						"systemverilog.defines" : []
+				}
+		}
+
+	}
+	
+
 }

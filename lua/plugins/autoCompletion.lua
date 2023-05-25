@@ -79,6 +79,9 @@ return {
 	--
 	{
 		"williamboman/mason.nvim",
-		build = ":MasonUpdate"
+		build = ":MasonUpdate",
+		config = function ()
+			require("mason").setup()
+		end
 	}
 }
