@@ -3,6 +3,7 @@ return {
 		"neoclide/coc.nvim",
 		branch = "release",
 		config = function()
+			vim.g.coc_global_extensions = {"coc-clangd", "coc-lua", "coc-pyright", "coc-rust-analyzer"}
 			vim.opt.updatetime = 300
 			vim.opt.signcolumn = "yes"
 			local keyset = vim.keymap.set

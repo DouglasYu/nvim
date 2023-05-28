@@ -36,22 +36,26 @@
 	
 	"languageserver": {
 
-		"lua": {
-			"command": "~/.local/share/nvim/mason/bin/lua-language-server",
-			"filetypes": ["lua"]
+
+		"svls": {
+			"command": "svls",
+			"filetypes": ["systemverilog"]
 		},
 
 		"svlangserver": {
-				"module": ".local/share/nvim/mason/packages/svlangserver/node_modules/@imc-trading/svlangserver/lib/svlangserver.js",
+				"command": "~/.local/share/nvim/mason/bin/svlangserver",
 				"filetypes": ["systemverilog"],
 				"settings": {
-						"systemverilog.includeIndexing": ["**/*.{sv,svh}"],
-						"systemverilog.excludeIndexing": ["test/**/*.sv*"],
-						"systemverilog.defines" : []
+					"systemverilog.includeIndexing": ["**/*.{sv,svh}"],
+					"systemverilog.excludeIndexing": ["test/**/*.sv*"],
+					"systemverilog.defines" : [],
+					"systemverilog.launchConfiguration": "/tools/verilator -sv -Wall --lint-only",
+					"systemverilog.formatCommand": "/tools/verible-verilog-format"
 				}
-		}
+		}	
 
 	}
-	
 
 }
+
+
