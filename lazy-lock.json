@@ -1,7 +1,7 @@
 {
   "catppuccin": { "branch": "main", "commit": "8338b02e9a8ffcb999520de7f15943712618760f" },
   "coc.nvim": { "branch": "release", "commit": "bbaa1d5d1ff3cbd9d26bb37cfda1a990494c4043" },
-  "lazy.nvim": { "branch": "main", "commit": "a93d8983c4335b6ae7d6e7d516a191d929186d5b" },
+  "lazy.nvim": { "branch": "main", "commit": "bef521ac89c8d423f9d092e37b58e8af0c099309" },
   "lightline.vim": { "branch": "master", "commit": "b1e91b41f5028d65fa3d31a425ff21591d5d957f" },
   "mason.nvim": { "branch": "main", "commit": "08b2fd308e0107eab9f0b59d570b69089fd0b522" },
   "mini.tabline": { "branch": "main", "commit": "d92d66c47148e6349d501a46d4615548634be192" },
@@ -16,6 +16,6 @@
   "tokyonight.nvim": { "branch": "main", "commit": "029dca9a40260788d495929d8cc83a9a8ebb6763" },
   "vim-devicons": { "branch": "master", "commit": "71f239af28b7214eebb60d4ea5bd040291fb7e33" },
   "vim-fugitive": { "branch": "master", "commit": "5f0d280b517cacb16f59316659966c7ca5e2bea2" },
-  "vim-gitgutter": { "branch": "master", "commit": "2ee95686c5944f99b42dd04fec005b30497006de" },
+  "vim-gitgutter": { "branch": "main", "commit": "2ee95686c5944f99b42dd04fec005b30497006de" },
   "which-key.nvim": { "branch": "main", "commit": "5a6c954a5a46023c19acc03a8b6d7c3e57964fc5" }
 }
